@@ -20,8 +20,8 @@ services:
     -  intern
 
   environment:
-    - USERNAME=${USERNAME}
-    - PASSWORD=${PASSWORD}
+    USERNAME: ${USERNAME}
+    PASSWORD: ${PASSWORD}
 
     # Uncomment to override defaults
     # - UID=1000
