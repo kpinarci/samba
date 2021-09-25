@@ -1,0 +1,34 @@
+version: '3'
+services: 
+ samba:
+  image: joebiellik/samba-server
+
+  volumes:
+    # You must provide a Samba config file
+    - ./smb.conf:/etc/samba/smb.conf
+
+    # Shares
+    - scanner:/mnt/scanner:rw
+   # - ./videos:/mnt/videos:rw
+
+  ports:
+   # - "137:137/udp"
+   # - "138:138/udp"
+   # - "139:139/tcp"
+    - "445:445/tcp"
+  networks:
+    -  intern
+
+  environment:
+    - USERNAME=${USERNAME}
+    - PASSWORD=${PASSWORD}
+
+    # Uncomment to override defaults
+    # - UID=1000
+    # - GID=1000
+volumes:
+ scanner:
+
+networks:
+  intern:
+    external: true
